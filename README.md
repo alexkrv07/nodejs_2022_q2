@@ -18,7 +18,7 @@ Default url for this app `localhost:3000`
 
 The CRUD API supports 4 methods:
 
-- GET `/api/users` or `/person/${userId}` returns all users or a user with corresponding `userId`
+- GET `/api/users` or `/api/users/${userId}` returns all users or a user with corresponding `userId`
 - POST `/api/users` is used to create a record about a new user and store it in the database
 - PUT `/api/users/${userId}` is used to update a record about an existing user
 - DELETE `/api/users/${userId}` is used to delete a record about an existing user from the database
