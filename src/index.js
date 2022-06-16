@@ -17,6 +17,8 @@ const server = http.createServer((req, res) => {
     UserController.createUser(req, res);
   } else if (mainPath === PATH_USERS && req.method === HTTP_METHODS.GET) {
     UserController.findById(req, res, pathId);
+  } else if (mainPath === PATH_USERS && req.method === HTTP_METHODS.DELETE) {
+    UserController.deleteById(req, res, pathId);
   }
 
   else {

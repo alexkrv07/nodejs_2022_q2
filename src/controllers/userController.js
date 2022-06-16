@@ -68,5 +68,30 @@ const findById = async (req, res, pathId) => {
   }
 };
 
+const deleteById = async (req, res, pathId) => {
+  try {
+    if (!isValidUIID(pathId)) {
+      res.writeHead(STATUS_CODE.BAD_REQUEST, {'Content-Type': 'application/json'});
+      res.end(JSON.stringify({message: `UserId: ${pathId} is invalid (not uuid)`}));
+      return;
+    }
 
-export { getUsers, createUser, findById };
+    const user = await UserModel.findById(pathId);
+
+    if (!user) {
+      res.writeHead(STATUS_CODE.NOT_FOUND, {'Content-Type': 'application/json'});
+      res.end(JSON.stringify({message: `User with id = ${pathId} doesn't exist`}));
+      return;
+    }
+
+    const isDelete = await UserModel.deleteById(pathId);
+
+    res.writeHead(STATUS_CODE.NO_CONTENT, {'Content-Type': 'application/json'});
+    res.end()
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export { getUsers, createUser, findById, deleteById };

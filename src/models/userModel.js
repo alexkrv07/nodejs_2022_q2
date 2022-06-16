@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-const users = [];
+let users = [];
 
 const findAll = () => {
   return new Promise((resolve, regect) => {
@@ -23,5 +23,12 @@ const createUser = (user) => {
   });
 };
 
+const deleteById = (id) => {
+  return new Promise((resolve, regect) => {
+    users = users.filter(user => user.id !== id);
+    resolve(true);
+  })
+};
 
-export { findAll, createUser, findById };
+
+export { findAll, createUser, findById, deleteById };
