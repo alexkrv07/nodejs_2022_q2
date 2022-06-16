@@ -7,6 +7,13 @@ const findAll = () => {
   })
 };
 
+const findById = (id) => {
+  return new Promise((resolve, regect) => {
+    const user = users.find(user => user.id === id);
+    resolve(user);
+  })
+};
+
 const createUser = (user) => {
   return new Promise((resolve, regect) => {
     const newUser = { ...user };
@@ -17,4 +24,4 @@ const createUser = (user) => {
 };
 
 
-export { findAll, createUser };
+export { findAll, createUser, findById };
