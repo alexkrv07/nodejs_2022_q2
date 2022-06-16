@@ -20,9 +20,9 @@ const server = http.createServer((req, res) => {
     UserController.findById(req, res, pathId);
   } else if (mainPath === PATH_USERS && req.method === HTTP_METHODS.DELETE) {
     UserController.deleteById(req, res, pathId);
-  }
-
-  else {
+  } else if (mainPath === PATH_USERS && req.method === HTTP_METHODS.PUT) {
+    UserController.updateById(req, res, pathId);
+  } else {
     res.writeHead(STATUS_CODE.NOT_FOUND, {'Content-Type': 'application/json'});
     res.end(JSON.stringify({message: `Path: ${req.url} with method: ${req.method} not allowed`}));
   }

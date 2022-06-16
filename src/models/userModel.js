@@ -30,5 +30,18 @@ const deleteById = (id) => {
   })
 };
 
+const updateById = (newUser, id) => {
+  console.log('put');
+  return new Promise((resolve, regect) => {
+    const index = users.findIndex(user => user.id === id);
+    console.log(index)
+    users[index] = {...users[index], ...newUser};
+    console.log(users[index])
+    resolve(users[index]);
+  });
+};
 
-export { findAll, createUser, findById, deleteById };
+
+
+
+export { findAll, createUser, findById, deleteById, updateById };
