@@ -4,8 +4,9 @@ import { HTTP_METHODS } from './constants/httpMethods.js';
 import { STATUS_CODE } from './constants/statusCode.js';
 import { splitPath}  from './helpers/splitPath.js';
 import * as UserController from './controllers/userController.js';
+import 'dotenv/config';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 const server = http.createServer((req, res) => {
 
