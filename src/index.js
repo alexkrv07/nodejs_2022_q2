@@ -1,15 +1,21 @@
 import * as http from 'http';
 import { PATH_USERS } from './constants/pathes.js';
-import { getUsers, } from './controllers/userController.js';
+import { HTTP_METHODS } from './constants/httpMethods.js';
+import { STATUS_CODE } from './constants/statusCode.js';
+import { getUsers, createUser } from './controllers/userController.js';
 
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-  if (req.url === PATH_USERS) {
+  if (req.url === PATH_USERS && req.method === HTTP_METHODS.GET)  {
     getUsers(req, res);
-  } else {
-    res.writeHead(404, {'Content-Type': 'application/json'});
-    res.end(JSON.stringify({message: `Path: ${req.url} not found`}));
+  } else if (req.url === PATH_USERS && req.method === HTTP_METHODS.POST) {
+    createUser(req, res);
+  }
+
+  else {
+    res.writeHead(STATUS_CODE.NOT_FOUND, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify({message: `Path: ${req.url} with method: ${req.method} not allowed`}));
   }
 
 });
