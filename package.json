@@ -5,8 +5,7 @@
 
   "scripts": {
     "start:ts:prod": "ts-node ./src/index.ts",
-    "start:ts:prod": "ts-node ./src/index.ts",
-    "start:ts:dev": "nodemon  ts-node ./src/index.ts"
+    "start:ts:dev": "nodemon ./src/index.ts"
   },
   "repository": {
     "type": "git",

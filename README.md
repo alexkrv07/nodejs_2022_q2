@@ -4,10 +4,10 @@
 1. Download and install latest LTS version of [Node.js](https://nodejs.org/en/). (Version 16.15.1 is required!)
 2. Clone this repository: `git@github.com:alexkrv07/nodejs_2022_q2.git`
 4. Go to folder nodejs_2022_q2: `nodejs_2022_q2`
-5. Checkout branch: `git checkout origin/simple-crud-api`
+5. Checkout branch: `git checkout origin/simple-crud-api-typescript`
 6. Run `npm install` in your terminal
-6. Run program in development mode `npm run start:dev`
-7. Run program in production mode `npm run start:prod`
+6. Run program in development mode `npm run start:ts:dev`
+7. Run program in production mode `npm run start:ts:prod`
 8. To exit, enter ```ctrl + c```.
 
 ## Usage
