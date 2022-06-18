@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-let users = [];
+import { IUser, ICreateUser } from '../interfaces/iUser'
+
+let users: IUser[] = [];
 
 const findAll = () => {
   return new Promise((resolve, regect) => {
@@ -7,41 +9,34 @@ const findAll = () => {
   })
 };
 
-const findById = (id) => {
+const findById = (id: string) => {
   return new Promise((resolve, regect) => {
     const user = users.find(user => user.id === id);
     resolve(user);
   })
 };
 
-const createUser = (user) => {
+const createUser = (user: ICreateUser) => {
   return new Promise((resolve, regect) => {
-    const newUser = { ...user };
-    newUser.id = uuidv4();
+    const newUser:  IUser = { ...user, id: uuidv4() };
     users.push(newUser);
     resolve(newUser);
   });
 };
 
-const deleteById = (id) => {
+const deleteById = (id: string) => {
   return new Promise((resolve, regect) => {
     users = users.filter(user => user.id !== id);
     resolve(true);
   })
 };
 
-const updateById = (newUser, id) => {
-  console.log('put');
+const updateById = (newUser: ICreateUser, id: string) => {
   return new Promise((resolve, regect) => {
     const index = users.findIndex(user => user.id === id);
-    console.log(index)
     users[index] = {...users[index], ...newUser};
-    console.log(users[index])
     resolve(users[index]);
   });
 };
-
-
-
 
 export { findAll, createUser, findById, deleteById, updateById };

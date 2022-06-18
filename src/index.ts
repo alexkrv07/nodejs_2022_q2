@@ -1,14 +1,15 @@
 import * as http from 'http';
-import { PATH_USERS } from './constants/pathes.js';
-import { HTTP_METHODS } from './constants/httpMethods.js';
-import { STATUS_CODE } from './constants/statusCode.js';
-import { splitPath}  from './helpers/splitPath.js';
-import * as UserController from './controllers/userController.js';
+import { PATH_USERS } from './constants/pathes';
+import { HTTP_METHODS } from './constants/httpMethods';
+import { STATUS_CODE } from './constants/statusCode';
+import { splitPath}  from './helpers/splitPath';
+import * as UserController from './controllers/userController';
 import 'dotenv/config';
+
 
 const PORT = process.env.PORT;
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((req, res ) => {
 
   const { mainPath, pathId } = splitPath(req.url);
 

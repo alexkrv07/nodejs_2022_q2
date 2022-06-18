@@ -1,10 +1,11 @@
-import * as UserModel from '../models/userModel.js';
-import { STATUS_CODE } from '../constants/statusCode.js';
-import * as CheckUser from '../helpers/checkUser.js';
-import { isValidUIID }  from '../helpers/checkvalid.js';
+import * as http from 'http';
+import * as UserModel from '../models/userModel';
+import { STATUS_CODE } from '../constants/statusCode';
+import * as CheckUser from '../helpers/checkUser';
+import { isValidUIID }  from '../helpers/checkvalid';
 
 
-const getUsers = async (req, res) => {
+const getUsers = async (req: http.IncomingMessage, res: http.ServerResponse) => {
   try {
     res.writeHead(STATUS_CODE.OK, {'Content-Type': 'application/json'});
     const users = await UserModel.findAll();
@@ -14,7 +15,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-const createUser = async (req, res) => {
+const createUser = async (req: http.IncomingMessage, res: http.ServerResponse) => {
   try {
     let body = '';
     req.on('data', (chunk) => {
@@ -45,7 +46,7 @@ const createUser = async (req, res) => {
   }
 }
 
-const findById = async (req, res, pathId) => {
+const findById = async (req: http.IncomingMessage, res: http.ServerResponse, pathId: string) => {
   try {
     if (!isValidUIID(pathId)) {
       res.writeHead(STATUS_CODE.BAD_REQUEST, {'Content-Type': 'application/json'});
@@ -68,7 +69,7 @@ const findById = async (req, res, pathId) => {
   }
 };
 
-const deleteById = async (req, res, pathId) => {
+const deleteById = async (req: http.IncomingMessage, res: http.ServerResponse, pathId: string) => {
   try {
     if (!isValidUIID(pathId)) {
       res.writeHead(STATUS_CODE.BAD_REQUEST, {'Content-Type': 'application/json'});
@@ -93,7 +94,7 @@ const deleteById = async (req, res, pathId) => {
   }
 };
 
-const updateById = async (req, res, pathId) => {
+const updateById = async (req: http.IncomingMessage, res: http.ServerResponse, pathId: string) => {
   try {
     if (!isValidUIID(pathId)) {
       res.writeHead(STATUS_CODE.BAD_REQUEST, {'Content-Type': 'application/json'});

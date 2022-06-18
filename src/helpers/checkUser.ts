@@ -1,4 +1,6 @@
-const isExistAllRequiredField = (testUser) => {
+import { IUser } from '../interfaces/iUser';
+
+const isExistAllRequiredField = (testUser: IUser) => {
   const arrayOfFieldUser = Object.keys(testUser);
   const arrayRequiredFields = ['age', "hobbies", "username"];
   const isAllRequired =  arrayRequiredFields.every(field => {
@@ -7,21 +9,21 @@ const isExistAllRequiredField = (testUser) => {
   return isAllRequired;
 }
 
-const isCorrectUserName = (userName) => {
+const isCorrectUserName = (userName: string) => {
   if (typeof userName !== 'string') {
     return false;
   }
   return true;
 };
 
-const isCorrectUserAge = (userAge) => {
+const isCorrectUserAge = (userAge: number) => {
   if (typeof userAge !== 'number') {
     return false;
   }
   return true;
 };
 
-const isCorrectUserHobbies = (UserHobbies) => {
+const isCorrectUserHobbies = (UserHobbies: string[]) => {
   if (!Array.isArray(UserHobbies)) {
     return false;
   }
@@ -33,7 +35,7 @@ const isCorrectUserHobbies = (UserHobbies) => {
   return true;
 }
 
-const isCorrectUser = (user) => {
+const isCorrectUser = (user: IUser) => {
   if (!isExistAllRequiredField(user) || !isCorrectUserName(user.username) || !isCorrectUserAge(user.age) || !isCorrectUserHobbies(user.hobbies)) {
     return false;
   }
